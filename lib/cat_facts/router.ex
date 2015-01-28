@@ -17,7 +17,7 @@ defmodule CatFacts.Router do
           #url = "https://#{slack_params["team_domain"]}.slack.com/services/hooks/incoming-webhook?token=#{slack_params["token"]}"
           url = System.get_env "SLACK_URL"
           data = [
-            username: "cat-facts",
+            username: "Cat Facts",
             icon_emoji: ":cat:",
             #channel: "##{slack_params["channel_name"]}",
             text: if System.get_env("SLACK_SHOW_USERNAME") == "true" do "#{slack_params["user_name"]}: #{hd parsed["facts"]}" else hd parsed["facts"] end
