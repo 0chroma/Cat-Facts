@@ -17,7 +17,7 @@ defmodule CatFacts.Router do
         data = [
           username: "cat-facts",
           icon_emoji: ":cat:",
-          channel: "##{slack_params["channel"]}",
+          channel: "#cat-facts#{slack_params["channel"]}",
           text: hd parsed["facts"]
         ]
         IO.inspect slack_params
