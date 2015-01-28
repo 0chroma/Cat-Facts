@@ -24,7 +24,8 @@ defmodule CatFacts.Router do
         IO.inspect slack_params
         IO.inspect url
         IO.inspect data
-        case HTTPoison.post url, {:form, data}, %{"Content-type" => "application/x-www-form-urlencoded"} do
+        {:ok, data} = JSON.encode data
+        case HTTPoison.post url, data, %{"Content-type" => "application/json"} do
           {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
             send_resp(conn, 200, hd parsed["facts"])
           err ->
