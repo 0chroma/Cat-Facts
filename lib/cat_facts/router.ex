@@ -18,9 +18,9 @@ defmodule CatFacts.Router do
           username: "cat-facts",
           icon_emoji: ":cat:",
           channel: "##{slack_params["channel"]}",
-          username: slack_params["user_name"],
           text: hd parsed["facts"]
         ]
+        IO.inspect slack_params
         IO.inspect url
         IO.inspect data
         case HTTPoison.post url, {:form, data}, %{"Content-type" => "application/x-www-form-urlencoded"} do
