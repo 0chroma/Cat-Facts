@@ -13,7 +13,7 @@ defmodule CatFacts.Router do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, parsed} = JSON.decode body
         slack_params = Map.get(conn, :params)
-        url = "http://#{slack_params["team_id"]}.slack.com/services/hooks/incoming-webhook?token=#{slack_params["token"]}"
+        url = "http://#{slack_params["team_domain"]}.slack.com/services/hooks/incoming-webhook?token=#{slack_params["token"]}"
         data = [
           username: "cat-facts",
           icon_emoji: ":cat:",
