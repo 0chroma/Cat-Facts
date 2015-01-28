@@ -22,6 +22,9 @@ defmodule CatFacts.Router do
             #channel: "##{slack_params["channel_name"]}",
             text: if System.get_env("SLACK_SHOW_USERNAME") == "true" do "#{slack_params["user_name"]}: #{hd parsed["facts"]}" else hd parsed["facts"] end
           ]
+          if System.get_env("SLACK_SHOW_USERNAME") == "false" do
+            Logger.info "Generated cat-fact for #{slack_params["user_name"]}: #{parsed["facts"]}"
+          end
           #IO.inspect slack_params
           #IO.inspect url
           #IO.inspect data
